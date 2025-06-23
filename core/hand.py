@@ -4,7 +4,7 @@ PrivataHand has a player's private hand (hole cards).
 TotalHand has the total hand (hole + community cards.)
 """
 
-from core.card import Card
+from core.card import Card, create_card
 
 
 class PrivateHand:
@@ -136,7 +136,31 @@ class TotalHand:
     ) -> None:
         self.private_hand = private_hand
         self.community_cards = community_cards
-        self.hand_rank: tuple[int, int]
+
+    @classmethod
+    def from_strings(cls, private_cards: list[str], community_cards: list[str]):
+        """
+        Factory method to create TotalHand from card string lists.
+
+        Args:
+            private_cards: List of card strings for private hand (e.g., ["Td", "Qd"])
+            community_cards: List of card strings for community cards (e.g., ["Jd", "4c", "Kd"])
+
+        Returns:
+            TotalHand: A new TotalHand instance
+
+        Example:
+            total_hand = TotalHand.from_strings(["Td", "Qd"], ["Jd", "4c", "Kd", "8s", "Ad"])
+        """
+        ph = PrivateHand()
+        for card_str in private_cards:
+            ph.receive_card(create_card(card_str))
+
+        cc = CommunityCards()
+        for card_str in community_cards:
+            cc.add_card(create_card(card_str))
+
+        return cls(ph, cc)
 
     @property
     def cards(self) -> list[Card]:

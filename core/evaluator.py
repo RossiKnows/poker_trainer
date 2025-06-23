@@ -46,7 +46,7 @@ class HandEvaluator:
         """Find strongest combination of five cards from up to 7."""
         raise NotImplementedError
 
-    def _evaluate_five_card_hand(self, hand: TotalHand) -> Tuple[int, List[int]]:
+    def _evaluate_five_card_hand(self, cards: List[Card]) -> Tuple[int, List[int]]:
         """
         Evaluates the strength of a 5 card poker hand.
         Returns a tuple of (hand_rank, high_cards) for comparison and display.
@@ -59,6 +59,29 @@ class HandEvaluator:
             - hand_rank: Integer representing hand strength (1=high card, 9=straight flush)
             - high_cards: List of card values in descending order for tiebreaking
         """
+        values = sorted([card.get_rank_value() for card in cards], reverse=True)
+        suits = [card.suit for card in cards]
+
+        # Royal Flush
+
+        # Straigh Flush
+
+        # Four of a Kind
+
+        # Full House
+
+        # Flush
+        is_flush = len(set(suits)) == 1
+        print(is_flush)
+
+        # Straight
+
+        # Three of a kind
+
+        # Two Pair
+
+        # Pair
+        # High Card
         raise NotImplementedError
 
     def compare_hands(self, hand1: TotalHand, hand2: TotalHand) -> int:
@@ -71,5 +94,6 @@ class HandEvaluator:
         raise NotImplementedError
 
 
+# Test code
 if __name__ == "__main__":
     evaluator = HandEvaluator()
