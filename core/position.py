@@ -1,0 +1,2 @@
+class Position:
+    raise NotImplementedError

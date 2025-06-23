@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Environments
+env/
+.env
+venv/
+.venv/
+
+# IDE
+.vscode/settings.json

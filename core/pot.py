@@ -1,0 +1,2 @@
+class Pot:
+    raise NotImplementedError
