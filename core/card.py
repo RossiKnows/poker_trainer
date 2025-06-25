@@ -92,7 +92,7 @@ class Card:
             suit_str = f"\033[31m{self.suit}\033[0m"  # Alleen symbool rood kleuren
         return f"{rank_str}{suit_str}"
 
-    def get_rank_value(self):
+    def get_rank_value(self) -> int:
         """
         Get the numeric value of the rank.
 
